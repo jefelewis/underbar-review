@@ -1,3 +1,4 @@
+
 (function() {
   'use strict';
 
@@ -137,6 +138,39 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+  
+    var arr = [];
+    var args = arguments;
+
+    // Check if contains iterator
+    _.filter(array, function (elem) {
+      // Check if contains iterator
+      if (args.length === 3) {
+        var mutatedArr = [];
+        if (_.indexOf(mutatedArr, iterator(elem)) === -1) {
+          mutatedArr.push(iterator(elem));
+          arr.push(elem);
+        }
+      } else {
+          if(_.indexOf(arr, elem) === -1) {
+          arr.push(elem);
+      }
+      }
+    });
+
+    return arr;
+
+    // Iterate through the array
+    // Does the array[i] contain 
+    //
+    //
+    // Return unique array
+
+
+
+
+
+
   };
 
 
