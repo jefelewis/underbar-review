@@ -153,7 +153,7 @@
           iterations.push(letter);
         });
 
-        expect(iterations).to.not.include(FILL_ME_IN);
+        expect(iterations).to.not.include(letters);
       });
 
       it('should iterate over objects and provide access to each value', function() {
