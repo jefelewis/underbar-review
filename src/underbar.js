@@ -169,11 +169,13 @@
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
   
-    // var mapped = 
-    // Output array
+    var mapped = [];
 
+    _.each(collection, function(elem){
+      mapped.push(iterator(elem));
 
-
+    });
+    return mapped;
   };
 
   /*
