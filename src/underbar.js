@@ -217,9 +217,23 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+    var val;
+
+    if (accumulator !== undefined) {
+      val = accumulator;
+      _.each(collection, function(elem){
+        val = iterator(val, elem);
+      });
+    } else {
+      val = collection[0];
+      _.each(collection.slice(1), function(elem){
+        val = iterator(val, elem);
+      });
+    }
+
     
 
-
+    return val;
 
   };
 
