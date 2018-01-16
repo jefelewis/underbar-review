@@ -62,23 +62,20 @@
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
 
-  // Array
-  if (Array.isArray(collection)) {
-    for (var i = 0; i < collection.length; i++) {
-      iterator(collection[i], i, collection);
+    // Array
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        iterator(collection[i], i, collection);
+      }
     }
-  }
 
-  // Object
-  else {
-    for (var key in collection) {
-      iterator(collection[key], key, collection);
+    // Object
+    else {
+      for (var key in collection) {
+        iterator(collection[key], key, collection);
+      }
+    
     }
-  
-  }
-
-
-
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
