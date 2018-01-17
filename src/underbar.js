@@ -446,7 +446,23 @@
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
 
-    
+    var copy = Array.prototype.slice.call(array);
+    var arr = [];
+
+    var rand = function (length) {
+      return Math.floor(Math.random() * (length + 1));
+    };
+    for (var i = 0; i < copy.length; i++) {
+      var getCopyLength = function (someArr) {
+        return someArr.length;
+      };
+      var len = getCopyLength(copy);
+      var pullIndex = rand(len);
+      arr.push(copy[pullIndex]);
+      copy.splice(pullIndex, 1)
+    }
+
+    return arr;
 
   };
 
