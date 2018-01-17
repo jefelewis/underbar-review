@@ -259,6 +259,7 @@
       if (iterator === undefined) {
         iterator = _.identity;
       }
+      // If no callback provided
       if (iterator(collection[i])) {
         output.push(collection[i]);
       }
@@ -274,6 +275,38 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    var truthy = false;
+    if (iterator === undefined) {
+      iterator = _.identity;
+    }
+    for (var i = 0; i < collection.length; i++) {
+      if (iterator(collection[i])) {
+        truthy = true;
+      }
+    }
+
+    // An honest attempt
+    // If no callback provided
+    // var truthy = false;
+    // if (iterator === undefined) {
+    //   iterator = _.identity;
+    // }
+    // if (!collection.length) return false;
+    // return _.every(collection, function (elem) {
+    //   if (truthy) {
+    //     return true;
+    //   } else {
+    //     if (iterator(elem)) {
+    //       truthy = true;
+    //       return true;
+    //     } else {
+    //       return iterator(elem);
+    //     }
+    //   }
+      
+    // });
+
+    return truthy;
   };
 
 
