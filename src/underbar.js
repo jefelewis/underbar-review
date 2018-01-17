@@ -276,14 +276,20 @@
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
     var truthy = false;
+
+    // If no callback provided
     if (iterator === undefined) {
       iterator = _.identity;
     }
+
     for (var i = 0; i < collection.length; i++) {
       if (iterator(collection[i])) {
         truthy = true;
       }
     }
+
+    return truthy;
+
 
     // An honest attempt
     // If no callback provided
@@ -305,8 +311,6 @@
     //   }
       
     // });
-
-    return truthy;
   };
 
 
@@ -329,6 +333,21 @@
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
+
+    // Get sources
+    var sources = Array.prototype.slice.call(arguments, 1);
+
+    // Iterate over all sources
+    _.each(sources, function (source) {
+      // Iterate over each source
+      for (var key in source) {
+        obj[key] = source[key];
+      }
+    });
+    
+
+    return obj;
+
   };
 
   // Like extend, but doesn't ever overwrite a key that already
